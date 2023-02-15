@@ -1,4 +1,3 @@
-
 <!-- <form  #myForm="ngForm"  (ngSubmit)="save(myForm)" class="example-form">
   <label> שם פרטי</label>
   <input placeholder="ישראל" [(ngModel)]="user.UserName" name="UserName" minlength="2" required #name="ngModel" />
@@ -46,7 +45,7 @@
   <div class="error" *ngIf="dateUser.touched&&name.errors&&dateUser.errors.minlength && dateUser.errors.maxlength">
   </div>
    add child! -->
-  <!-- <div><input type="button" value="להוספת ילד" (click)="addChild()" /></div>
+<!-- <div><input type="button" value="להוספת ילד" (click)="addChild()" /></div>
   <div *ngIf="ifShow">
     <div><input placeholder="שם" [(ngModel)]="oneChild.NameOfChild" type="text" name="nameOfChild" minlength="2"
         #NameOfChild="ngModel" /></div>
@@ -82,11 +81,11 @@
 
 
 <!-- (ngSubmit)="save(myForm)" -->
-<form class="example-form"  #myForm="ngForm">
+<form class="example-form" #myForm="ngForm" dir="rtl" >
   <mat-form-field class="example-full-width">
     <mat-label>שם פרטי</mat-label>
-    <input  [(ngModel)]="user.UserName" name="UserName" minlength="2" required #name="ngModel"
-      matInput placeholder="ישראל" value="ישראל">
+    <input [(ngModel)]="user.UserName" name="UserName" minlength="2" required #name="ngModel" matInput
+      placeholder="ישראל" value="ישראל">
 
     <div class="error" *ngIf="name.touched&&name.errors&&name.errors.required">שם הוא שדה חובה</div>
     <div class="error" *ngIf="name.touched&&name.errors&&name.errors.minlength">שם מינימום
@@ -95,93 +94,99 @@
   </mat-form-field>
 
 
-  
-    <mat-form-field class="example-full-width"> 
-      <mat-label>שם משפחה</mat-label>
-      <input  [(ngModel)]="user.UserFamilyName" name="UserFamilyName" minlength="2" required #nameF="ngModel" matInput placeholder="ישראלי" value="ישראלי">
-    
-    </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>שם משפחה</mat-label>
+    <input [(ngModel)]="user.UserFamilyName" name="UserFamilyName" minlength="2" required #nameF="ngModel" matInput
+      placeholder="ישראלי" value="ישראלי">
+
+  </mat-form-field>
 
 
-    
-
-    <mat-form-field class="example-full-width"> 
-      <mat-label>ת.ז</mat-label>
-      <input  [(ngModel)]="user.UserId" name="UserId" type="number" minlength="9" required  maxlength="9"  #idUser="ngModel"  matInput placeholder="ת.ז" value="ת.ז">
-      <div class="error" *ngIf="idUser.touched && !idUser.valid && idUser.errors.minlength && idUser.errors.maxlength">תז
-        היא שדה חובה</div>
-      <p *ngIf="!isIsraelValidID(idUser.value)" class="errors">ת.ז. לא תקינה</p>
-    </mat-form-field>
-
-    
-    <mat-form-field class="example-full-width"> 
-      <mat-label>תאריך לידה</mat-label>
-      <input  [(ngModel)]="user.UserBirthday" type="date" name="birthday" required #dateUser="ngModel"  matInput placeholder="ת.ז" value="ת.ז">
-      <div class="error" *ngIf="dateUser.touched&&name.errors&&dateUser.errors.minlength && dateUser.errors.maxlength"></div>
-
-    </mat-form-field>
-
-    
 
 
-    <h3> מין</h3>
-    <mat-button-toggle-group name="genders"[(ngModel)]="user.Gender"  #genderUser="ngModel"  aria-label="genders" >
-      <mat-button-toggle value="male" >זכר</mat-button-toggle>
-      <mat-button-toggle value="female">נקבה</mat-button-toggle>
-    </mat-button-toggle-group>
-    <div class="error" *ngIf="genderUser.touched"> </div>
+  <mat-form-field class="example-full-width">
+    <mat-label>ת.ז</mat-label>
+    <input [(ngModel)]="user.UserId" name="UserId" type="number" minlength="9" required maxlength="9" #idUser="ngModel"
+      matInput placeholder="ת.ז" value="ת.ז">
+    <div class="error" *ngIf="idUser.touched && !idUser.valid && idUser.errors.minlength && idUser.errors.maxlength">תז
+      היא שדה חובה</div>
+    <p *ngIf="!isIsraelValidID(idUser.value)" class="errors">ת.ז. לא תקינה</p>
+  </mat-form-field>
+
+
+  <mat-form-field class="example-full-width">
+    <mat-label>תאריך לידה</mat-label>
+    <input [(ngModel)]="user.UserBirthday" type="date" name="birthday" required #dateUser="ngModel" matInput
+      placeholder="ת.ז" value="ת.ז">
+    <div class="error" *ngIf="dateUser.touched&&name.errors&&dateUser.errors.minlength && dateUser.errors.maxlength">
+    </div>
+
+  </mat-form-field>
+
+
+
+
+  <h3> מין</h3>
+  <mat-button-toggle-group name="genders" [(ngModel)]="user.Gender" #genderUser="ngModel" aria-label="genders">
+    <mat-button-toggle value="male">זכר</mat-button-toggle>
+    <mat-button-toggle value="female">נקבה</mat-button-toggle>
+  </mat-button-toggle-group>
+  <div class="error" *ngIf="genderUser.touched"> </div>
 
   {{user.Gender}}
 
-<h4> קופ"ח</h4>
-<mat-form-field appearance="fill" disableRipple     >
-  <mat-label>לחץ כדי לבחור את קופ"הח  אליה אתה משוייך</mat-label>
-  <mat-select disableRipple [(ngModel)]="user.HMO" type="text" name="Hmo" required #hmoUser="ngModel" >
-    <mat-option value="1">מכבי</mat-option>
-    <mat-option value="2">מאוחדת </mat-option>
-    <mat-option value="3">כללית</mat-option>
-    <mat-option value="4">לאומית </mat-option>
-  </mat-select>
-</mat-form-field>
-<div class="error" *ngIf="hmoUser.touched"></div>  
-
- 
-
-      <section>
-      <button mat-button color="accent"(click)="addChild()">להוספת ילד</button>
-    </section>
-    <div *ngIf="ifShow">
-
-      <mat-form-field class="example-full-width"> 
-    <mat-label>שם : </mat-label>
-      <input [(ngModel)]="oneChild.NameOfChild" type="text" name="nameOfChild" minlength="2" #NameOfChild="ngModel"  matInput placeholder="שם" value="ת.ז">
-      <div class="error" *ngIf="NameOfChild.touched && name.errors && NameOfChild.errors.required">שם הוא שדה חובה</div>
-    <div class="error" *ngIf="NameOfChild.touched && name.errors && NameOfChild.errors.minlength">שם מינימום
-      {{name.errors.minlength.requiredLength}} תווים ואתה הקשת רק{{name.errors.minlength.actualLength}}
-    </div>
+  <h4> קופ"ח</h4>
+  <mat-form-field appearance="fill" disableRipple>
+    <mat-label>לחץ כדי לבחור את קופ"הח אליה אתה משוייך</mat-label>
+    <mat-select disableRipple [(ngModel)]="user.HMO" type="text" name="Hmo" required #hmoUser="ngModel">
+      <mat-option value="1">מכבי</mat-option>
+      <mat-option value="2">מאוחדת </mat-option>
+      <mat-option value="3">כללית</mat-option>
+      <mat-option value="4">לאומית </mat-option>
+    </mat-select>
   </mat-form-field>
+  <div class="error" *ngIf="hmoUser.touched"></div>
 
-    <mat-form-field class="example-full-width"> 
-      <mat-label>ת.ז</mat-label>
-      <input  [(ngModel)]="oneChild.IdOfChild" type="number" name="IdOfChild"  minlength="9" required  maxlength="9"  #IdOfChild="ngModel"  matInput placeholder="ת.ז" value="ת.ז">
-      <div class="error" *ngIf="IdOfChild.touched && !IdOfChild.valid && IdOfChild.errors.minlength && IdOfChild.errors.maxlength">תז
-        היא שדה חובה</div>
-    <p *ngIf="!isIsraelValidID(IdOfChild.value)" class="errors">ת.ז. לא תקינה</p>
+
+
+  <section>
+    <button mat-button color="accent" (click)="addChild()">להוספת ילד</button>
+  </section>
+  <div *ngIf="ifShow">
+
+    <mat-form-field class="example-full-width">
+      <mat-label>שם : </mat-label>
+      <input [(ngModel)]="oneChild.NameOfChild" type="text" name="nameOfChild" minlength="2" #NameOfChild="ngModel"
+        matInput placeholder="שם" value="ת.ז">
+      <div class="error" *ngIf="NameOfChild.touched && name.errors && NameOfChild.errors.required">שם הוא שדה חובה</div>
+      <div class="error" *ngIf="NameOfChild.touched && name.errors && NameOfChild.errors.minlength">שם מינימום
+        {{name.errors.minlength.requiredLength}} תווים ואתה הקשת רק{{name.errors.minlength.actualLength}}
+      </div>
     </mat-form-field>
 
-    <mat-form-field class="example-full-width"> 
+    <mat-form-field class="example-full-width">
+      <mat-label>ת.ז</mat-label>
+      <input [(ngModel)]="oneChild.IdOfChild" type="number" name="IdOfChild" minlength="9" required maxlength="9"
+        #IdOfChild="ngModel" matInput placeholder="ת.ז" value="ת.ז">
+      <div class="error"
+        *ngIf="IdOfChild.touched && !IdOfChild.valid && IdOfChild.errors.minlength && IdOfChild.errors.maxlength">תז
+        היא שדה חובה</div>
+      <p *ngIf="!isIsraelValidID(IdOfChild.value)" class="errors">ת.ז. לא תקינה</p>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
       <mat-label>תאריך לידה</mat-label>
-      <input  [(ngModel)]="oneChild.BirthdayOfChild" type="date" name="DateOfBirdth" required #dateUser="ngModel"  matInput placeholder="תאריך" value="ת.ז">
+      <input [(ngModel)]="oneChild.BirthdayOfChild" type="date" name="DateOfBirdth" required #dateUser="ngModel"
+        matInput placeholder="תאריך" value="ת.ז">
       <div class="error" *ngIf="dateUser.touched&&name.errors"></div>
     </mat-form-field>
 
-    <div> <input type="button" value="הוסף" (click)="putChild(myForm)" /></div>  </div>
-    <div> <input type="button" value="הכנס" [disabled]="!myForm.valid" (click)="logIn(myForm)" /></div>
-    
+    <section>
+      <button mat-button color="accent"(click)="putChild(myForm)">הוסף ילד</button>
+    </section>
 
-
-
-    
-     
-       
-
+  </div>
+  <section>
+    <button mat-button color="accent"[disabled]="!myForm.valid" (click)="logIn(myForm)"> הכנס טופס זה למערכת</button>
+  </section>
